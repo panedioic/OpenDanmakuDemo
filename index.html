@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OpenDanmakuDemo</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!-- <script src="https://wzrd.in/standalone/buffer"></script> -->
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@0.20.6/dist/web3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    <script src="https://bundle.run/buffer@5.6.0"></script>
+    <script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js"
+    integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB"
+    crossorigin="anonymous"></script>
+    <script src="./index.js"></script>
+  </head>
+  <script>
+
+        function test_1(){
+            contractInstance.userRegister(0x0, 0x0, {from: web3.eth.accounts[0]}, function(err, res) {
+                if(err){
+                    throw err;
+                    return;
+                }
+                console.log('Success at '+res+' !');
+            });
+        }
+
+        function test_2(){
+            contractInstance.storeDanmakuFile(0x0, test_fileaddr.length, 27970, 0, test_fileaddr, 0x0, {from: web3.eth.accounts[0], gasLimit: 6000000}, function(err, res) {
+                if(err){
+                    throw err;
+                    return;
+                }
+                console.log('Success at '+res+' !');
+            });
+        }
+
+
+
+
+  </script>
+  <body>
+    <fieldset hidden>
+      <legend>Getting start</legend>
+      <button type="button" onclick="init_1()">Use local web3 provider and ipfsservice.</button>
+      <br>
+      <button type="button" onclick="init_2()">Use a middle server.</button>
+      Server IP：
+      <input type="text" name="abi" id="getter-initer-1">
+      Server Port：
+      <input type="text" name="addr" id="getter-initer-2">
+    </fieldset>
+    <br>
+    <fieldset hidden>
+      <legend>Initialization</legend>
+      <button type="button" onclick="init_3()">Initialze a contract</button>
+      <br>
+      <button type="button" onclick="init_4()">Initialize with a gevin abi and contract address</button>
+      Contract ABI：
+      <input type="text" name="abi" id="getter-initer-3">
+      Contract Address：
+      <input type="text" name="addr" id="getter-initer-4">
+    </fieldset>
+    <br>
+    <fieldset>
+      <legend>User register</legend>
+      <button type="button" onclick="user_register()">Regist</button>
+      Input CID: <input type="text" name="abi" id="getter-reg"> For test, you can use cid "0x0".
+    </fieldset>
+    <br>
+    <fieldset>
+      <legend>Get danmaku</legend>
+      Input video CID：
+      <input type="text" name="cid" id="getter-get">
+      <button type="button" onclick="get_danmaku()">Get</button>
+      <br>
+      Report：
+      cid:<input type="text" name="cid" id="getter-rep-cid">
+      hash:<input type="text" name="cid" id="getter-rep-hash">
+      <button type="button" onclick="report_danmaku()">Report</button>
+    </fieldset>
+    <br>
+    <fieldset>
+      <legend>Send danmaku</legend>
+      Input danmaku：
+      <input type="text" name="abi" id="getter-send">
+      <button type="button" onclick="add_danmaku()">Add danmaku</button>
+      <button type="button" onclick="commit_danmaku()">Commit changes</button>
+       &lt;= Input "text apper [font-size] [font-color] [mode]" on above cid split by ","
+      <br>
+      <div id="temp-change"></div>
+    </fieldset>
+    <br>
+    <fieldset>
+      <legend>Token</legend>
+      Balance of：
+      <input type="text" name="abi" id="getter-token-bal">
+      <button type="button" onclick="token_balanceof()">Check</button><br>
+      Transfer：
+      address:<input type="text" name="abi" id="getter-token-tra-addr">
+      value:<input type="text" name="abi" id="getter-token-tra-val">
+      <button type="button" onclick="token_transfer()">send</button><br>
+      Deposit：
+      <input type="text" name="abi" id="getter-token-dep">
+      <button type="button" onclick="token_deposit()">send</button><br>
+      Withdraw：
+      <input type="text" name="abi" id="getter-token-wit">
+      <button type="button" onclick="token_withdraw()">send</button>
+    </fieldset>
+  </body>
+</html>
